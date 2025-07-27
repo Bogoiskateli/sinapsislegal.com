@@ -1,82 +1,83 @@
-<<<<<<< HEAD
-/*
- * Sinapsis Legal - JavaScript principal
- * Incluye funcionalidad de menú móvil con hamburger
- * Última actualización: Menú móvil funcional
- */
-
-=======
->>>>>>> 4c8e08542f237685bba60edd7d54d33428798869
 // Mobile Menu Toggle
 document.addEventListener('DOMContentLoaded', function() {
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
     const navButtons = document.querySelector('.nav-buttons');
-<<<<<<< HEAD
     const body = document.body;
 
-    // Crear overlay para cerrar el menú
+    // Create overlay for mobile menu
     const overlay = document.createElement('div');
     overlay.className = 'mobile-menu-overlay';
     body.appendChild(overlay);
 
+    function closeMobileMenu() {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+        navButtons.classList.remove('active');
+        overlay.classList.remove('active');
+        body.style.overflow = 'auto';
+    }
+
+    function openMobileMenu() {
+        hamburger.classList.add('active');
+        navMenu.classList.add('active');
+        navButtons.classList.add('active');
+        overlay.classList.add('active');
+        body.style.overflow = 'hidden';
+    }
+
     if (hamburger && navMenu && navButtons) {
         hamburger.addEventListener('click', function(e) {
             e.stopPropagation();
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-            navButtons.classList.toggle('active');
-            overlay.classList.toggle('active');
-            body.style.overflow = body.style.overflow === 'hidden' ? '' : 'hidden';
+            if (hamburger.classList.contains('active')) {
+                closeMobileMenu();
+            } else {
+                openMobileMenu();
+            }
         });
 
-        // Cerrar menú al hacer click en el overlay
-        overlay.addEventListener('click', function() {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
-            navButtons.classList.remove('active');
-            overlay.classList.remove('active');
-            body.style.overflow = '';
-        });
-
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('.nav-menu a, .nav-buttons button').forEach(link => {
-=======
-
-    if (hamburger && navMenu && navButtons) {
-        hamburger.addEventListener('click', function() {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-            navButtons.classList.toggle('active');
-        });
+        // Close mobile menu when clicking overlay
+        overlay.addEventListener('click', closeMobileMenu);
 
         // Close mobile menu when clicking on a link
         document.querySelectorAll('.nav-menu a').forEach(link => {
->>>>>>> 4c8e08542f237685bba60edd7d54d33428798869
             link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-                navButtons.classList.remove('active');
-<<<<<<< HEAD
-                overlay.classList.remove('active');
-                body.style.overflow = '';
+                closeMobileMenu();
             });
         });
 
-        // Cerrar menú al hacer scroll
-        window.addEventListener('scroll', function() {
-            if (navMenu.classList.contains('active')) {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-                navButtons.classList.remove('active');
-                overlay.classList.remove('active');
-                body.style.overflow = '';
+        // Close mobile menu on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && hamburger.classList.contains('active')) {
+                closeMobileMenu();
             }
         });
-=======
+
+        // Mobile dropdown functionality
+        const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+        dropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    const dropdown = this.nextElementSibling;
+                    const isOpen = dropdown.style.display === 'block';
+                    
+                    // Close all other dropdowns
+                    document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                        menu.style.display = 'none';
+                    });
+                    
+                    // Toggle current dropdown
+                    if (isOpen) {
+                        dropdown.style.display = 'none';
+                        this.classList.remove('active');
+                    } else {
+                        dropdown.style.display = 'block';
+                        this.classList.add('active');
+                    }
+                }
             });
         });
->>>>>>> 4c8e08542f237685bba60edd7d54d33428798869
     }
 });
 
@@ -1064,22 +1065,12 @@ async function showConektaPaymentModal(plan, amount) {
                     </div>
                     
                     <button type="submit" class="payment-button">
-<<<<<<< HEAD
                         Pagar $${amount.toLocaleString('es-MX')} MXN
-=======
-                        🔒 Pagar $${amount.toLocaleString('es-MX')} MXN
->>>>>>> 4c8e08542f237685bba60edd7d54d33428798869
                     </button>
                     
                     <div class="security-info">
                         <div class="security-badges">
-<<<<<<< HEAD
                             <span>Pago 100% seguro</span>
-=======
-                            <span>🔒</span>
-                            <span>Pago 100% seguro</span>
-                            <span>🔒</span>
->>>>>>> 4c8e08542f237685bba60edd7d54d33428798869
                         </div>
                         <div>Tu información está protegida con encriptación SSL de 256 bits</div>
                     </div>
@@ -1524,7 +1515,6 @@ async function createConektaToken(cardData) {
             reject(error);
         }
     });
-<<<<<<< HEAD
 }
 
 // Modal para Declaración de Uso
@@ -2108,6 +2098,4 @@ function showConstitutionModal() {
             submitBtn.disabled = false;
         }
     });
-=======
->>>>>>> 4c8e08542f237685bba60edd7d54d33428798869
 } 

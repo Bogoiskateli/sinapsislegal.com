@@ -1,7 +1,0 @@
-Archivo de prueba para verificar deploy
-Fecha: $(Get-Date)
-Cambios realizados:
-- Menú móvil funcional agregado
-- Estilos CSS actualizados
-- JavaScript mejorado
-- Dropdown de servicios implementado 

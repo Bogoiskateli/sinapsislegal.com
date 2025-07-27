@@ -1,14 +1,18 @@
+<<<<<<< HEAD
 /*
  * Sinapsis Legal - JavaScript principal
  * Incluye funcionalidad de menú móvil con hamburger
  * Última actualización: Menú móvil funcional
  */
 
+=======
+>>>>>>> 4c8e08542f237685bba60edd7d54d33428798869
 // Mobile Menu Toggle
 document.addEventListener('DOMContentLoaded', function() {
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
     const navButtons = document.querySelector('.nav-buttons');
+<<<<<<< HEAD
     const body = document.body;
 
     // Crear overlay para cerrar el menú
@@ -37,10 +41,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Close mobile menu when clicking on a link
         document.querySelectorAll('.nav-menu a, .nav-buttons button').forEach(link => {
+=======
+
+    if (hamburger && navMenu && navButtons) {
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            navButtons.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+>>>>>>> 4c8e08542f237685bba60edd7d54d33428798869
             link.addEventListener('click', () => {
                 hamburger.classList.remove('active');
                 navMenu.classList.remove('active');
                 navButtons.classList.remove('active');
+<<<<<<< HEAD
                 overlay.classList.remove('active');
                 body.style.overflow = '';
             });
@@ -56,6 +73,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 body.style.overflow = '';
             }
         });
+=======
+            });
+        });
+>>>>>>> 4c8e08542f237685bba60edd7d54d33428798869
     }
 });
 
@@ -1043,12 +1064,22 @@ async function showConektaPaymentModal(plan, amount) {
                     </div>
                     
                     <button type="submit" class="payment-button">
+<<<<<<< HEAD
                         Pagar $${amount.toLocaleString('es-MX')} MXN
+=======
+                        🔒 Pagar $${amount.toLocaleString('es-MX')} MXN
+>>>>>>> 4c8e08542f237685bba60edd7d54d33428798869
                     </button>
                     
                     <div class="security-info">
                         <div class="security-badges">
+<<<<<<< HEAD
                             <span>Pago 100% seguro</span>
+=======
+                            <span>🔒</span>
+                            <span>Pago 100% seguro</span>
+                            <span>🔒</span>
+>>>>>>> 4c8e08542f237685bba60edd7d54d33428798869
                         </div>
                         <div>Tu información está protegida con encriptación SSL de 256 bits</div>
                     </div>
@@ -1493,6 +1524,7 @@ async function createConektaToken(cardData) {
             reject(error);
         }
     });
+<<<<<<< HEAD
 }
 
 // Modal para Declaración de Uso
@@ -2076,4 +2108,6 @@ function showConstitutionModal() {
             submitBtn.disabled = false;
         }
     });
+=======
+>>>>>>> 4c8e08542f237685bba60edd7d54d33428798869
 } 

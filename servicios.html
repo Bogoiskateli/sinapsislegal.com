@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios de Registro de Marcas - Sinapsis Legal</title>
+    <meta name="description" content="Servicios profesionales de registro de marcas en México. Búsqueda, registro, renovación y protección de marcas comerciales ante el IMPI.">
+    <meta name="keywords" content="registro de marcas, IMPI, propiedad intelectual, marcas comerciales, México, abogados especializados">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sinapsislegal.com/servicios">
+    <meta property="og:title" content="Servicios de Registro de Marcas - Sinapsis Legal">
+    <meta property="og:description" content="Servicios profesionales de registro de marcas en México. Búsqueda, registro, renovación y protección de marcas comerciales.">
+    <meta property="og:image" content="https://sinapsislegal.com/images/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://sinapsislegal.com/servicios">
+    <meta property="twitter:title" content="Servicios de Registro de Marcas - Sinapsis Legal">
+    <meta property="twitter:description" content="Servicios profesionales de registro de marcas en México.">
+    <meta property="twitter:image" content="https://sinapsislegal.com/images/twitter-image.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="LOGOSNPSLGL.png" alt="Sinapsis Legal" class="logo-image">
+                </a>
+            </div>
+            
+            <ul class="nav-menu">
+                                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle active">Servicios</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="servicios.html" class="active">
+                                    <i class="fas fa-trademark"></i>
+                                    <div class="menu-text">
+                                        <div>Registros de Marca y Servicios Relacionados</div>
+                                        <div class="menu-description">Protección integral de propiedad intelectual</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="constitucion.html">
+                                    <i class="fas fa-building"></i>
+                                    <div class="menu-text">
+                                        <div>Constitución de Empresa 100% en Línea</div>
+                                        <div class="menu-description">SAS - Sociedad por Acciones Simplificada</div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                <li><a href="precios.html">Precios</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+            
+            <div class="nav-buttons">
+                                        <button class="btn-secondary" onclick="showSearchModal()">Búsqueda Gratuita</button>
+            </div>
+            
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1>Servicios Profesionales de Registro de Marcas</h1>
+                    <p>Protegemos tu marca comercial con servicios integrales de propiedad intelectual. Desde la búsqueda inicial hasta la renovación, estamos contigo en cada paso.</p>
+                    <div class="hero-buttons">
+                        <button class="btn-primary btn-large" onclick="showSearchModal()">Búsqueda Gratuita</button>
+                        <button class="btn-secondary btn-large" onclick="scrollToServices()">Ver Servicios</button>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="hero-graphic">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Overview -->
+    <section class="services-overview">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nuestros Servicios Especializados</h2>
+                <p>Ofrecemos una gama completa de servicios de propiedad intelectual para proteger y fortalecer tu marca comercial.</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Búsqueda de Marcas</h3>
+                    <p>Análisis exhaustivo de disponibilidad de marcas usando tecnología de IA avanzada para detectar conflictos potenciales.</p>
+                    <div class="service-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Búsqueda en base de datos IMPI</li>
+                            <li><i class="fas fa-check"></i> Análisis de similitud fonética</li>
+                            <li><i class="fas fa-check"></i> Reporte detallado de riesgos</li>
+                            <li><i class="fas fa-check"></i> Recomendaciones estratégicas</li>
+                        </ul>
+                    </div>
+                    <div class="service-price">
+                        <span class="price">$1,699</span>
+                        <span class="currency">MXN + IVA</span>
+                    </div>
+                    <button class="btn-primary" onclick="showSearchModal()">Iniciar Búsqueda</button>
+                </div>
+
+                <div class="service-card featured">
+                    <div class="service-badge">Más Popular</div>
+                    <div class="service-icon">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <h3>Registro de Marca</h3>
+                    <p>Proceso completo de registro de marca comercial ante el IMPI, incluyendo preparación de documentos y seguimiento.</p>
+                    <div class="service-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Preparación de solicitud</li>
+                            <li><i class="fas fa-check"></i> Clasificación de productos/servicios</li>
+                            <li><i class="fas fa-check"></i> Seguimiento del trámite</li>
+                            <li><i class="fas fa-check"></i> Respuesta a oficios</li>
+                            <li><i class="fas fa-check"></i> Certificado de registro</li>
+                        </ul>
+                    </div>
+                    <div class="service-price">
+                        <span class="price">$5,799</span>
+                        <span class="currency">MXN + IVA</span>
+                    </div>
+                    <button class="btn-primary" onclick="showRegistrationModal()">Registrar Marca</button>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3>Renovación de Marca</h3>
+                    <p>Renovación oportuna de tu marca comercial para mantener la protección legal activa por otros 10 años.</p>
+                    <div class="service-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Verificación de vencimiento</li>
+                            <li><i class="fas fa-check"></i> Preparación de renovación</li>
+                            <li><i class="fas fa-check"></i> Pago de derechos</li>
+                            <li><i class="fas fa-check"></i> Seguimiento del trámite</li>
+                        </ul>
+                    </div>
+                    <div class="service-price">
+                        <span class="price">$2,999</span>
+                        <span class="currency">MXN + IVA</span>
+                    </div>
+                    <button class="btn-primary" onclick="showRenewalModal()">Renovar Marca</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional Services -->
+    <section class="additional-services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Servicios Adicionales</h2>
+                <p>Servicios especializados para necesidades específicas de protección de marca.</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-gavel"></i>
+                    </div>
+                    <h3>Oposición a Marcas</h3>
+                    <p>Defendemos tus derechos de marca presentando oposiciones contra solicitudes que puedan afectar tu negocio.</p>
+                    <div class="service-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Análisis de solicitudes</li>
+                            <li><i class="fas fa-check"></i> Preparación de oposición</li>
+                            <li><i class="fas fa-check"></i> Presentación ante IMPI</li>
+                            <li><i class="fas fa-check"></i> Seguimiento del proceso</li>
+                        </ul>
+                    </div>
+                    <div class="service-price">
+                        <span class="price">$8,999</span>
+                        <span class="currency">MXN + IVA</span>
+                    </div>
+                    <button class="btn-secondary" onclick="showOppositionModal()">Solicitar Oposición</button>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Registro Internacional</h3>
+                    <p>Extendemos la protección de tu marca a otros países a través del Sistema de Madrid y acuerdos bilaterales.</p>
+                    <div class="service-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Evaluación de países</li>
+                            <li><i class="fas fa-check"></i> Sistema de Madrid</li>
+                            <li><i class="fas fa-check"></i> Acuerdos bilaterales</li>
+                            <li><i class="fas fa-check"></i> Seguimiento internacional</li>
+                        </ul>
+                    </div>
+                    <div class="service-price">
+                        <span class="price">$12,999</span>
+                        <span class="currency">MXN + IVA</span>
+                    </div>
+                    <button class="btn-secondary" onclick="showInternationalModal()">Consultar Registro</button>
+                </div>
+
+
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-file-signature"></i>
+                    </div>
+                    <h3>Declaración de Uso</h3>
+                    <p>Presentación de declaración de uso de marca comercial ante el IMPI para mantener la vigencia del registro.</p>
+                    <div class="service-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Preparación de documentación</li>
+                            <li><i class="fas fa-check"></i> Presentación ante IMPI</li>
+                            <li><i class="fas fa-check"></i> Seguimiento del trámite</li>
+                            <li><i class="fas fa-check"></i> Confirmación de aceptación</li>
+                        </ul>
+                    </div>
+                    <div class="service-price">
+                        <span class="price">$1,100</span>
+                        <span class="currency">MXN + IVA</span>
+                        <div class="price-note">(Tarifa IMPI $985)</div>
+                    </div>
+                    <button class="btn-secondary" onclick="showDeclarationModal()">Solicitar Declaración</button>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-reply"></i>
+                    </div>
+                    <h3>Respuesta a Requerimientos IMPI</h3>
+                    <p>Respuesta profesional a requerimientos y oficios del IMPI para mantener el proceso de registro activo.</p>
+                    <div class="service-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Análisis del requerimiento</li>
+                            <li><i class="fas fa-check"></i> Preparación de respuesta</li>
+                            <li><i class="fas fa-check"></i> Presentación ante IMPI</li>
+                            <li><i class="fas fa-check"></i> Seguimiento de resolución</li>
+                        </ul>
+                    </div>
+                    <div class="service-price">
+                        <span class="price">$1,200 - $2,500</span>
+                        <span class="currency">MXN + IVA</span>
+                        <div class="price-note">(Tarifa IMPI $377.89)</div>
+                    </div>
+                    <button class="btn-secondary" onclick="showRequirementsModal()">Consultar Requerimiento</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nuestro Proceso</h2>
+                <p>Un proceso simple y transparente para proteger tu marca comercial.</p>
+            </div>
+            
+            <div class="process-grid">
+                <div class="process-step">
+                    <div class="process-number">1</div>
+                    <h3>Consulta Inicial</h3>
+                    <p>Evaluamos tu marca y te asesoramos sobre la mejor estrategia de protección.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="process-number">2</div>
+                    <h3>Búsqueda de Disponibilidad</h3>
+                    <p>Realizamos una búsqueda exhaustiva para verificar la disponibilidad de tu marca.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="process-number">3</div>
+                    <h3>Preparación de Documentos</h3>
+                    <p>Preparamos toda la documentación necesaria para el registro ante el IMPI.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="process-number">4</div>
+                    <h3>Seguimiento y Respuesta</h3>
+                    <p>Damos seguimiento al trámite y respondemos cualquier requerimiento del IMPI.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="process-number">5</div>
+                    <h3>Certificado de Registro</h3>
+                    <p>Recibes tu certificado de registro de marca con protección legal completa.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Preguntas Frecuentes</h2>
+                <p>Resolvemos las dudas más comunes sobre nuestros servicios.</p>
+            </div>
+            
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>¿Cuánto tiempo toma el registro de una marca?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>El proceso de registro ante el IMPI típicamente toma entre 6 a 12 meses. Sin embargo, con nuestra búsqueda previa, puedes saber en 24 horas si tu marca está disponible para registro.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>¿Qué incluye el servicio de registro de marca?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Incluye la preparación de la solicitud, clasificación de productos/servicios, seguimiento del trámite, respuesta a oficios del IMPI y la entrega del certificado de registro.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>¿Puedo registrar mi marca en varios países?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sí, ofrecemos servicios de registro internacional a través del Sistema de Madrid y acuerdos bilaterales. Te asesoramos sobre la mejor estrategia para tu expansión internacional.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>¿Qué pasa si alguien se opone a mi marca?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Si recibes una oposición, te representamos en el proceso legal ante el IMPI. Analizamos los argumentos de la oposición y presentamos la mejor defensa para proteger tus derechos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>¿Listo para Proteger tu Marca?</h2>
+                <p>Comienza con una búsqueda gratuita y descubre si tu marca está disponible para registro.</p>
+                <button class="btn-primary btn-large" onclick="showSearchModal()">Búsqueda Gratuita de Marca</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Sinapsis Legal</h3>
+                    <p>Especialistas en registro de marcas comerciales en México. Protegemos tu negocio con servicios profesionales de propiedad intelectual.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Servicios</h3>
+                    <ul>
+                        <li><a href="#búsqueda">Búsqueda de Marcas</a></li>
+                        <li><a href="#registro">Registro de Marca</a></li>
+                        <li><a href="#renovación">Renovación</a></li>
+                        <li><a href="#oposición">Oposición</a></li>
+                        <li><a href="#internacional">Registro Internacional</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Recursos</h3>
+                    <ul>
+                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="#faq">Preguntas Frecuentes</a></li>
+                        <li><a href="#guías">Guías Legales</a></li>
+                        <li><a href="#casos">Casos de Éxito</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> +52 55 1234-5678</li>
+                        <li><i class="fas fa-envelope"></i> contacto@sinapsislegal.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Ciudad de México, México</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Sinapsis Legal. Todos los derechos reservados. | <a href="#privacidad">Política de Privacidad</a> | <a href="#términos">Términos de Servicio</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+    
+    <script>
+        function scrollToServices() {
+            document.querySelector('.services-overview').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+        
+        function showRegistrationModal() {
+            // Implementar modal de registro
+            alert('Modal de registro de marca - En desarrollo');
+        }
+        
+        function showRenewalModal() {
+            // Implementar modal de renovación
+            alert('Modal de renovación de marca - En desarrollo');
+        }
+    </script>
+</body>
+</html> 

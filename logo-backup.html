@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Logo Generator</title>
+    <style>
+        body { margin: 0; padding: 20px; background: white; }
+        .logo-container { 
+            display: inline-block; 
+            padding: 10px; 
+            border: 1px solid #ccc; 
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-container">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" width="200" height="50">
+            <defs>
+                <style>
+                    .logo-text { font-family: 'Inter', Arial, sans-serif; font-weight: 600; font-size: 16px; fill: #1a5f7a; }
+                    .logo-symbol { stroke: #1a5f7a; stroke-width: 2; fill: none; }
+                    .logo-dot { fill: #FFD700; }
+                    .logo-dot-orange { fill: #FF8C00; }
+                    .logo-dot-blue { fill: #1E90FF; }
+                    .logo-dot-red { fill: #FF6347; }
+                </style>
+            </defs>
+            
+            <!-- Company Name -->
+            <text x="10" y="32" class="logo-text">Sinapsis Legal</text>
+            
+            <!-- Network Symbol -->
+            <g transform="translate(160, 25)">
+                <!-- Central lines -->
+                <line x1="0" y1="-8" x2="0" y2="8" class="logo-symbol"/>
+                <line x1="-8" y1="0" x2="8" y2="0" class="logo-symbol"/>
+                
+                <!-- Diagonal lines -->
+                <line x1="-6" y1="-6" x2="6" y2="6" class="logo-symbol" stroke-width="1.5"/>
+                <line x1="-6" y1="6" x2="6" y2="-6" class="logo-symbol" stroke-width="1.5"/>
+                
+                <!-- Colored dots -->
+                <circle cx="0" cy="-8" r="2" class="logo-dot"/>
+                <circle cx="0" cy="0" r="2" class="logo-dot-orange"/>
+                <circle cx="0" cy="8" r="2" class="logo-dot-blue"/>
+                <circle cx="-8" cy="0" r="2" class="logo-dot-red"/>
+                <circle cx="8" cy="0" r="2" class="logo-dot-red"/>
+            </g>
+        </svg>
+    </div>
+    
+    <p>Para generar PNG: Haz clic derecho en el logo → "Guardar imagen como..."</p>
+</body>
+</html> 

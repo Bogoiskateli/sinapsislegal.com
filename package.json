@@ -1,0 +1,39 @@
+{
+  "name": "sinapsis-legal",
+  "version": "1.0.0",
+  "description": "Sitio web de Sinapsis Legal - Registro de marcas en México",
+  "main": "index.html",
+  "scripts": {
+    "dev": "netlify dev",
+    "build": "echo 'No build step required'",
+    "deploy": "netlify deploy --prod",
+    "start": "netlify dev",
+    "functions:dev": "netlify dev --functions",
+    "start:windows": "start-dev.bat",
+    "dev:windows": "powershell -Command \"netlify dev\""
+  },
+  "keywords": [
+    "trademark",
+    "legal",
+    "mexico",
+    "impi",
+    "law-firm"
+  ],
+  "author": "Sinapsis Legal",
+  "license": "MIT",
+  "dependencies": {
+    "mysql2": "^3.6.0",
+    "nodemailer": "^6.9.0",
+    "jsonwebtoken": "^9.0.0",
+    "stripe": "^12.0.0",
+    "@paypal/checkout-server-sdk": "^1.0.3",
+    "mercadopago": "^1.5.0",
+    "conekta": "^4.0.0"
+  },
+  "devDependencies": {
+    "netlify-cli": "^15.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+} 

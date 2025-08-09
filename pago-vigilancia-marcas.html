@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pago - Vigilancia de Marcas | Sinapsis Legal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="LogoSNPSLGL.ico">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="LogoSNPSLGL.png" alt="Sinapsis Legal">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="payment-header">
+            <h1>Pago - Vigilancia de Marcas</h1>
+            <p>Complete su información y seleccione su método de pago</p>
+        </section>
+
+        <div class="payment-container">
+            <div class="service-summary">
+                <h2>Resumen del Servicio</h2>
+                <div class="service-details">
+                    <div class="service-item">
+                        <span class="service-name">Vigilancia de Marcas</span>
+                        <span class="service-price">$1,500 MXN</span>
+                    </div>
+                    <div class="service-item">
+                        <span class="service-name">Monitoreo Mensual</span>
+                        <span class="service-price">$800 MXN/mes</span>
+                    </div>
+                    <div class="service-item">
+                        <span class="service-name">Reporte de Conflictos</span>
+                        <span class="service-price">$300 MXN</span>
+                    </div>
+                    <div class="service-item total">
+                        <span class="service-name">Total Inicial</span>
+                        <span class="service-price">$2,600 MXN</span>
+                    </div>
+                </div>
+                <div class="price-note">
+                    <p><strong>Nota:</strong> El servicio incluye 3 meses de monitoreo inicial. Después se factura mensualmente.</p>
+                </div>
+            </div>
+
+            <form class="payment-form" id="paymentForm">
+                <div class="form-section">
+                    <h3>Información Personal</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nombre">Nombre Completo *</label>
+                            <input type="text" id="nombre" name="nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Correo Electrónico *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="telefono">Teléfono *</label>
+                            <input type="tel" id="telefono" name="telefono" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="rfc">RFC</label>
+                            <input type="text" id="rfc" name="rfc">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="empresa">Empresa</label>
+                            <input type="text" id="empresa" name="empresa">
+                        </div>
+                        <div class="form-group">
+                            <label for="cargo">Cargo</label>
+                            <input type="text" id="cargo" name="cargo">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Información de la Marca a Vigilar</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nombreMarca">Nombre de la Marca *</label>
+                            <input type="text" id="nombreMarca" name="nombreMarca" required placeholder="Nombre de la marca a vigilar">
+                        </div>
+                        <div class="form-group">
+                            <label for="numeroRegistro">Número de Registro</label>
+                            <input type="text" id="numeroRegistro" name="numeroRegistro" placeholder="Si ya está registrada">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="claseNiza">Clase Niza Principal *</label>
+                            <select id="claseNiza" name="claseNiza" required>
+                                <option value="">Seleccione una clase</option>
+                                <option value="1">Clase 1 - Productos químicos</option>
+                                <option value="2">Clase 2 - Pinturas, barnices</option>
+                                <option value="3">Clase 3 - Productos de limpieza</option>
+                                <option value="4">Clase 4 - Aceites y combustibles</option>
+                                <option value="5">Clase 5 - Productos farmacéuticos</option>
+                                <option value="6">Clase 6 - Metales comunes</option>
+                                <option value="7">Clase 7 - Máquinas y motores</option>
+                                <option value="8">Clase 8 - Herramientas manuales</option>
+                                <option value="9">Clase 9 - Aparatos científicos</option>
+                                <option value="10">Clase 10 - Aparatos médicos</option>
+                                <option value="11">Clase 11 - Aparatos de iluminación</option>
+                                <option value="12">Clase 12 - Vehículos</option>
+                                <option value="13">Clase 13 - Armas de fuego</option>
+                                <option value="14">Clase 14 - Metales preciosos</option>
+                                <option value="15">Clase 15 - Instrumentos musicales</option>
+                                <option value="16">Clase 16 - Papel y cartón</option>
+                                <option value="17">Clase 17 - Caucho y plásticos</option>
+                                <option value="18">Clase 18 - Cuero e imitaciones</option>
+                                <option value="19">Clase 19 - Materiales de construcción</option>
+                                <option value="20">Clase 20 - Muebles</option>
+                                <option value="21">Clase 21 - Artículos domésticos</option>
+                                <option value="22">Clase 22 - Cordelería y velas</option>
+                                <option value="23">Clase 23 - Hilos y tejidos</option>
+                                <option value="24">Clase 24 - Textiles</option>
+                                <option value="25">Clase 25 - Vestimenta</option>
+                                <option value="26">Clase 26 - Encajes y bordados</option>
+                                <option value="27">Clase 27 - Alfombras</option>
+                                <option value="28">Clase 28 - Juegos y juguetes</option>
+                                <option value="29">Clase 29 - Carne y pescado</option>
+                                <option value="30">Clase 30 - Café, té, azúcar</option>
+                                <option value="31">Clase 31 - Productos agrícolas</option>
+                                <option value="32">Clase 32 - Bebidas no alcohólicas</option>
+                                <option value="33">Clase 33 - Bebidas alcohólicas</option>
+                                <option value="34">Clase 34 - Tabaco</option>
+                                <option value="35">Clase 35 - Publicidad</option>
+                                <option value="36">Clase 36 - Servicios financieros</option>
+                                <option value="37">Clase 37 - Construcción</option>
+                                <option value="38">Clase 38 - Telecomunicaciones</option>
+                                <option value="39">Clase 39 - Transporte</option>
+                                <option value="40">Clase 40 - Tratamiento de materiales</option>
+                                <option value="41">Clase 41 - Educación</option>
+                                <option value="42">Clase 42 - Servicios científicos</option>
+                                <option value="43">Clase 43 - Servicios de alimentación</option>
+                                <option value="44">Clase 44 - Servicios médicos</option>
+                                <option value="45">Clase 45 - Servicios legales</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="clasesAdicionales">Clases Adicionales</label>
+                            <input type="text" id="clasesAdicionales" name="clasesAdicionales" placeholder="Ej: 9, 42, 45">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="estadoMarca">Estado de la Marca</label>
+                            <select id="estadoMarca" name="estadoMarca">
+                                <option value="registrada">Registrada</option>
+                                <option value="solicitud">En solicitud</option>
+                                <option value="uso">En uso (no registrada)</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="fechaRegistro">Fecha de Registro/Solicitud</label>
+                            <input type="date" id="fechaRegistro" name="fechaRegistro">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label for="descripcionMarca">Descripción de la Marca</label>
+                            <textarea id="descripcionMarca" name="descripcionMarca" rows="3" placeholder="Describa la marca, su diseño, colores, y cualquier característica distintiva..."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Alcance del Monitoreo</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="territorioMonitoreo">Territorio de Monitoreo *</label>
+                            <select id="territorioMonitoreo" name="territorioMonitoreo" required>
+                                <option value="">Seleccione el territorio</option>
+                                <option value="mexico">México</option>
+                                <option value="internacional">Internacional</option>
+                                <option value="latinoamerica">Latinoamérica</option>
+                                <option value="norteamerica">Norteamérica</option>
+                                <option value="europa">Europa</option>
+                                <option value="asia">Asia</option>
+                                <option value="especifico">Territorio específico</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="duracionMonitoreo">Duración del Monitoreo *</label>
+                            <select id="duracionMonitoreo" name="duracionMonitoreo" required>
+                                <option value="">Seleccione la duración</option>
+                                <option value="3-meses">3 meses</option>
+                                <option value="6-meses">6 meses</option>
+                                <option value="12-meses">12 meses</option>
+                                <option value="continuo">Continuo</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="frecuenciaReportes">Frecuencia de Reportes</label>
+                            <select id="frecuenciaReportes" name="frecuenciaReportes">
+                                <option value="semanal">Semanal</option>
+                                <option value="quincenal">Quincenal</option>
+                                <option value="mensual">Mensual</option>
+                                <option value="solo-conflictos">Solo cuando hay conflictos</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="tipoConflictos">Tipos de Conflictos a Monitorear</label>
+                            <select id="tipoConflictos" name="tipoConflictos">
+                                <option value="todos">Todos los tipos</option>
+                                <option value="similitud">Similitud fonética/visual</option>
+                                <option value="clase-misma">Misma clase Niza</option>
+                                <option value="clase-similar">Clases similares</option>
+                                <option value="dilucion">Dilución de marca</option>
+                                <option value="especifico">Tipos específicos</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label for="industriaEspecifica">Industria o Sector Específico</label>
+                            <textarea id="industriaEspecifica" name="industriaEspecifica" rows="2" placeholder="Describa la industria o sector específico donde opera su marca..."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Información Adicional</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="marcasSimilares">¿Conoce marcas similares?</label>
+                            <select id="marcasSimilares" name="marcasSimilares">
+                                <option value="no">No</option>
+                                <option value="si">Sí</option>
+                                <option value="no-se">No sé</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="conflictosAnteriores">¿Ha tenido conflictos anteriores?</label>
+                            <select id="conflictosAnteriores" name="conflictosAnteriores">
+                                <option value="no">No</option>
+                                <option value="si">Sí</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label for="marcasSimilaresLista">Lista de Marcas Similares Conocidas</label>
+                            <textarea id="marcasSimilaresLista" name="marcasSimilaresLista" rows="3" placeholder="Si conoce marcas similares, listelas aquí con sus números de registro si los tiene..."></textarea>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label for="conflictosAnterioresDetalle">Detalle de Conflictos Anteriores</label>
+                            <textarea id="conflictosAnterioresDetalle" name="conflictosAnterioresDetalle" rows="3" placeholder="Describa cualquier conflicto anterior con marcas similares..."></textarea>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label for="informacionAdicional">Información Adicional</label>
+                            <textarea id="informacionAdicional" name="informacionAdicional" rows="3" placeholder="Cualquier información adicional que considere relevante para el monitoreo de su marca..."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Método de Pago</h3>
+                    <div class="payment-methods">
+                        <label class="payment-method">
+                            <input type="radio" name="metodoPago" value="tarjeta" checked>
+                            <span class="method-label">Tarjeta de Crédito/Débito</span>
+                        </label>
+                        <label class="payment-method">
+                            <input type="radio" name="metodoPago" value="transferencia">
+                            <span class="method-label">Transferencia Bancaria</span>
+                        </label>
+                    </div>
+
+                    <div id="cardDetails" class="card-details">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="numeroTarjeta">Número de Tarjeta *</label>
+                                <input type="text" id="numeroTarjeta" name="numeroTarjeta" maxlength="19" placeholder="1234 5678 9012 3456">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fechaExpiracion">Fecha de Expiración *</label>
+                                <input type="text" id="fechaExpiracion" name="fechaExpiracion" placeholder="MM/AA" maxlength="5">
+                            </div>
+                            <div class="form-group">
+                                <label for="cvv">CVV *</label>
+                                <input type="text" id="cvv" name="cvv" maxlength="4" placeholder="123">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nombreTarjeta">Nombre en la Tarjeta *</label>
+                                <input type="text" id="nombreTarjeta" name="nombreTarjeta">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="transferDetails" class="transfer-details" style="display: none;">
+                        <div class="transfer-info">
+                            <h4>Datos Bancarios</h4>
+                            <p><strong>Banco:</strong> BBVA Bancomer</p>
+                            <p><strong>Cuenta:</strong> 1234 5678 9012 3456</p>
+                            <p><strong>CLABE:</strong> 012345678901234567</p>
+                            <p><strong>Beneficiario:</strong> Sinapsis Legal S.C.</p>
+                            <p><strong>RFC:</strong> SIN123456789</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <div class="terms-checkbox">
+                        <label>
+                            <input type="checkbox" id="aceptoTerminos" name="aceptoTerminos" required>
+                            <span>Acepto los términos y condiciones del servicio</span>
+                        </label>
+                    </div>
+                    <div class="terms-checkbox">
+                        <label>
+                            <input type="checkbox" id="aceptoPrivacidad" name="aceptoPrivacidad" required>
+                            <span>Acepto la política de privacidad y el tratamiento de mis datos personales</span>
+                        </label>
+                    </div>
+                    <div class="terms-checkbox">
+                        <label>
+                            <input type="checkbox" id="aceptoMonitoreo" name="aceptoMonitoreo" required>
+                            <span>Autorizo el monitoreo continuo de mi marca y el envío de reportes según la frecuencia seleccionada</span>
+                        </label>
+                    </div>
+                    <div class="terms-checkbox">
+                        <label>
+                            <input type="checkbox" id="aceptoRenovacion" name="aceptoRenovacion" required>
+                            <span>Autorizo la renovación automática del servicio de monitoreo después del período inicial</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-payment">Procesar Pago - $2,600 MXN</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Sinapsis Legal. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="conekta.js"></script>
+    <script src="conekta-config.js"></script>
+    <script>
+        // Mostrar/ocultar detalles de tarjeta según método de pago
+        document.querySelectorAll('input[name="metodoPago"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const cardDetails = document.getElementById('cardDetails');
+                const transferDetails = document.getElementById('transferDetails');
+                
+                if (this.value === 'tarjeta') {
+                    cardDetails.style.display = 'block';
+                    transferDetails.style.display = 'none';
+                } else {
+                    cardDetails.style.display = 'none';
+                    transferDetails.style.display = 'block';
+                }
+            });
+        });
+
+        // Formatear número de tarjeta
+        document.getElementById('numeroTarjeta').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\s/g, '');
+            value = value.replace(/\D/g, '');
+            value = value.replace(/(\d{4})(?=\d)/g, '$1 ');
+            e.target.value = value;
+        });
+
+        // Formatear fecha de expiración
+        document.getElementById('fechaExpiracion').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length >= 2) {
+                value = value.substring(0, 2) + '/' + value.substring(2, 4);
+            }
+            e.target.value = value;
+        });
+
+        // Validar RFC
+        document.getElementById('rfc').addEventListener('input', function(e) {
+            let value = e.target.value.toUpperCase();
+            value = value.replace(/[^A-Z0-9]/g, '');
+            e.target.value = value;
+        });
+
+        // Manejo del formulario
+        document.getElementById('paymentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (!document.getElementById('aceptoTerminos').checked || 
+                !document.getElementById('aceptoPrivacidad').checked || 
+                !document.getElementById('aceptoMonitoreo').checked ||
+                !document.getElementById('aceptoRenovacion').checked) {
+                alert('Debe aceptar todos los términos y condiciones');
+                return;
+            }
+
+            const formData = new FormData(this);
+            const paymentData = Object.fromEntries(formData.entries());
+            
+            console.log('Datos del monitoreo:', paymentData);
+            
+            // Aquí se procesaría el pago con Conekta
+            alert('Pago procesado correctamente. Comenzaremos el monitoreo de su marca y recibirá el primer reporte en la frecuencia seleccionada.');
+        });
+    </script>
+</body>
+</html> 

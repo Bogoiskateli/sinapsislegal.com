@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pago - Oposición a Marcas | Sinapsis Legal</title>
+    <meta name="description" content="Servicio profesional de oposición a marcas comerciales. Protege tu marca registrada contra solicitudes conflictivas.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="LogoSNPSLGLcerebro.png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Conekta -->
+    <script src="https://cdn.conekta.io/js/latest/conekta.js"></script>
+    
+    <style>
+        .payment-hero {
+            background: linear-gradient(135deg, #1a5f7a 0%, #2c88a0 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        
+        .payment-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .payment-hero .price {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #ffd700;
+            margin: 1rem 0;
+        }
+        
+        .payment-hero .price-note {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+        
+        .service-details {
+            background: #f8f9fa;
+            padding: 3rem 2rem;
+        }
+        
+        .service-details h2 {
+            color: #1a5f7a;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .benefit-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #1a5f7a;
+        }
+        
+        .benefit-card h3 {
+            color: #1a5f7a;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .benefit-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .payment-form-container {
+            background: white;
+            padding: 3rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .payment-form h2 {
+            color: #1a5f7a;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #1a5f7a;
+            box-shadow: 0 0 0 3px rgba(26, 95, 122, 0.1);
+        }
+        
+        .payment-summary {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            border: 2px solid #e2e8f0;
+        }
+        
+        .payment-summary h3 {
+            color: #1a5f7a;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .summary-row:last-child {
+            border-bottom: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #1a5f7a;
+        }
+        
+        .btn-pay {
+            background: linear-gradient(135deg, #1a5f7a 0%, #2c88a0 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .btn-pay:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(26, 95, 122, 0.3);
+        }
+        
+        .btn-pay:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .security-info {
+            background: #e8f5e8;
+            border: 1px solid #4caf50;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .security-info p {
+            color: #2e7d32;
+            margin: 0;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .payment-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .payment-hero .price {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <a href="index.html">
+                    <img src="LogoSNPSLGLcerebro.png" alt="Sinapsis Legal" class="logo">
+                </a>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html">Inicio</a>
+                <a href="servicios.html">Servicios</a>
+                <a href="contacto.html">Contacto</a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="payment-hero">
+        <h1>Oposición a Marcas Comerciales</h1>
+        <p class="price">$8,999 MXN</p>
+        <p class="price-note">+ IVA • Pago único</p>
+        <p>Protege tu marca registrada contra solicitudes conflictivas</p>
+    </section>
+
+    <!-- Service Details -->
+    <section class="service-details">
+        <h2>¿Qué incluye este servicio?</h2>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <h3>📋 Análisis Legal Completo</h3>
+                <p>Evaluación exhaustiva de la solicitud conflictiva y fundamentos legales para la oposición.</p>
+            </div>
+            <div class="benefit-card">
+                <h3>⚖️ Preparación de Documentos</h3>
+                <p>Elaboración profesional de todos los documentos legales requeridos para la oposición.</p>
+            </div>
+            <div class="benefit-card">
+                <h3>🏛️ Presentación ante IMPI</h3>
+                <p>Gestión completa del trámite ante el Instituto Mexicano de la Propiedad Industrial.</p>
+            </div>
+            <div class="benefit-card">
+                <h3>📞 Seguimiento y Comunicación</h3>
+                <p>Monitoreo del proceso y comunicación constante sobre el estado de tu oposición.</p>
+            </div>
+            <div class="benefit-card">
+                <h3>🔍 Defensa Legal</h3>
+                <p>Representación legal durante todo el proceso de oposición y respuesta a contrarrespuestas.</p>
+            </div>
+            <div class="benefit-card">
+                <h3>📊 Reporte Final</h3>
+                <p>Documento completo con el resultado y recomendaciones para futuras acciones legales.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Form -->
+    <section class="payment-form-container">
+        <div class="payment-form">
+            <h2>Información para la Oposición</h2>
+            
+            <form id="oppositionForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Nombre completo *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Correo electrónico *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone">Teléfono *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Empresa</label>
+                        <input type="text" id="company" name="company">
+                    </div>
+                </div>
+                
+                <div class="form-group full-width">
+                    <label for="marcaRegistrada">Tu marca registrada *</label>
+                    <input type="text" id="marcaRegistrada" name="marcaRegistrada" placeholder="Ej: MiMarca" required>
+                </div>
+                
+                <div class="form-group full-width">
+                    <label for="marcaOponer">Marca a la que te opones *</label>
+                    <input type="text" id="marcaOponer" name="marcaOponer" placeholder="Ej: MarcaConflictiva" required>
+                </div>
+                
+                <div class="form-group full-width">
+                    <label for="numeroRegistro">Número de registro de tu marca</label>
+                    <input type="text" id="numeroRegistro" name="numeroRegistro" placeholder="Ej: 1234567">
+                </div>
+                
+                <div class="form-group full-width">
+                    <label for="clasesProductos">Clases de productos/servicios de tu marca</label>
+                    <textarea id="clasesProductos" name="clasesProductos" rows="3" placeholder="Ej: Clase 9 (Software), Clase 35 (Servicios comerciales)"></textarea>
+                </div>
+                
+                <div class="form-group full-width">
+                    <label for="motivosOposicion">Motivos de oposición *</label>
+                    <select id="motivosOposicion" name="motivosOposicion" required>
+                        <option value="">Selecciona los motivos</option>
+                        <option value="confusion">Confusión con marca registrada</option>
+                        <option value="similitud">Similitud fonética o visual</option>
+                        <option value="derechos">Derechos de autor o propiedad intelectual</option>
+                        <option value="mala_fe">Mala fe en la solicitud</option>
+                        <option value="otro">Otro motivo</option>
+                    </select>
+                </div>
+                
+                <div class="form-group full-width">
+                    <label for="descripcionMotivos">Descripción detallada de los motivos *</label>
+                    <textarea id="descripcionMotivos" name="descripcionMotivos" rows="4" placeholder="Describe detalladamente por qué te opones a esta marca..." required></textarea>
+                </div>
+                
+                <div class="form-group full-width">
+                    <label for="informacionAdicional">Información adicional relevante</label>
+                    <textarea id="informacionAdicional" name="informacionAdicional" rows="3" placeholder="Cualquier información adicional que consideres importante..."></textarea>
+                </div>
+                
+                <!-- Payment Summary -->
+                <div class="payment-summary">
+                    <h3>Resumen del Pago</h3>
+                    <div class="summary-row">
+                        <span>Servicio de Oposición a Marcas</span>
+                        <span>$8,999.00 MXN</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>IVA (16%)</span>
+                        <span>$1,439.84 MXN</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Total a pagar</span>
+                        <span>$10,438.84 MXN</span>
+                    </div>
+                </div>
+                
+                <div class="security-info">
+                    <p>🔒 Tu información está protegida. Utilizamos Conekta para procesar pagos de forma segura.</p>
+                </div>
+                
+                <button type="submit" class="btn-pay" id="payButton">
+                    Pagar $10,438.84 MXN
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Sinapsis Legal</h3>
+                <p>Expertos en propiedad intelectual y derecho mercantil</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <p>📧 info@sinapsislegal.com</p>
+                <p>📱 +52 55 1234 5678</p>
+            </div>
+            <div class="footer-section">
+                <h3>Enlaces</h3>
+                <a href="aviso-privacidad.html">Aviso de Privacidad</a>
+                <a href="constitucion.html">Constitución</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Sinapsis Legal. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script src="conekta.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('oppositionForm');
+            const payButton = document.getElementById('payButton');
+            
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                // Validate form
+                if (!form.checkValidity()) {
+                    form.reportValidity();
+                    return;
+                }
+                
+                // Show loading state
+                payButton.disabled = true;
+                payButton.textContent = 'Procesando pago...';
+                
+                try {
+                    // Get form data
+                    const formData = new FormData(form);
+                    const data = Object.fromEntries(formData);
+                    
+                    // Add service information
+                    data.service = 'oposicion_marcas';
+                    data.amount = 10438.84;
+                    data.currency = 'MXN';
+                    
+                    // Process payment with Conekta
+                    const paymentResult = await processConektaPayment({
+                        amount: 10438.84,
+                        currency: 'MXN',
+                        description: 'Servicio de Oposición a Marcas - Sinapsis Legal',
+                        customer: {
+                            name: data.name,
+                            email: data.email,
+                            phone: data.phone
+                        },
+                        metadata: {
+                            service: 'oposicion_marcas',
+                            marcaRegistrada: data.marcaRegistrada,
+                            marcaOponer: data.marcaOponer,
+                            motivosOposicion: data.motivosOposicion
+                        }
+                    });
+                    
+                    if (paymentResult.success) {
+                        // Send form data to backend
+                        const response = await fetch('/.netlify/functions/api', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                action: 'opposition_payment',
+                                payment_id: paymentResult.payment_id,
+                                ...data
+                            })
+                        });
+                        
+                        const result = await response.json();
+                        
+                        if (result.success) {
+                            // Redirect to success page
+                            window.location.href = 'redirect-after-payment.html?service=oposicion_marcas&amount=10438.84';
+                        } else {
+                            throw new Error(result.error || 'Error al procesar el pago');
+                        }
+                    } else {
+                        throw new Error(paymentResult.error || 'Error en el procesamiento del pago');
+                    }
+                    
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('Error al procesar el pago: ' + error.message);
+                    
+                    // Reset button
+                    payButton.disabled = false;
+                    payButton.textContent = 'Pagar $10,438.84 MXN';
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

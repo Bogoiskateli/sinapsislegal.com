@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Sinapsis Legal</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="128x128" href="LogoSNPSLGLcerebro.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="LogoSNPSLGLcerebro.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="LogoSNPSLGLcerebro.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="LogoSNPSLGLcerebro.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="LogoSNPSLGLcerebro.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="LogoSNPSLGLcerebro.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="LogoSNPSLGLcerebro.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="LogoSNPSLGLcerebro.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="LogoSNPSLGLcerebro.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="LogoSNPSLGLcerebro.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="LogoSNPSLGLcerebro.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="LogoSNPSLGLcerebro.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="LogoSNPSLGLcerebro.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="LogoSNPSLGLcerebro.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="LogoSNPSLGLcerebro.png">
+    <link rel="shortcut icon" href="LogoSNPSLGLcerebro.png">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="dashboard-body">
+    <!-- Dashboard Header -->
+    <header class="dashboard-header">
+        <div class="header-left">
+            <button class="dashboard-hamburger" onclick="toggleDashboardSidebar()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="logo">
+                <img src="LOGOSNPSLGL.png" alt="Sinapsis Legal" class="logo-image">
+            </div>
+        </div>
+        <div class="header-center">
+            <nav class="dashboard-nav">
+                <a href="#" class="nav-item active" data-section="overview">
+                    <i class="fas fa-home"></i>
+                    <span>Mi Dashboard</span>
+                </a>
+                <a href="#" class="nav-item" data-section="tramites">
+                    <i class="fas fa-file-alt"></i>
+                    <span>Mis Trámites</span>
+                </a>
+                <a href="#" class="nav-item" data-section="documentos">
+                    <i class="fas fa-folder"></i>
+                    <span>Documentos</span>
+                </a>
+                <a href="#" class="nav-item" data-section="facturacion">
+                    <i class="fas fa-receipt"></i>
+                    <span>Facturación</span>
+                </a>
+                <a href="#" class="nav-item admin-only" data-section="formularios" style="display: none;">
+                    <i class="fas fa-clipboard-list"></i>
+                    <span>Formularios Web</span>
+                </a>
+            </nav>
+        </div>
+        <div class="header-right">
+            <div class="admin-session-indicator" id="adminSessionIndicator" style="display: none;">
+                <span class="admin-badge">
+                    <i class="fas fa-user-shield"></i>
+                    Admin Activo
+                </span>
+            </div>
+            <div class="user-menu">
+                <div class="user-info">
+                    <span class="user-name" id="userName">Cargando...</span>
+                    <span class="user-email" id="userEmail">Cargando...</span>
+                </div>
+                <div class="user-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item">
+                        <i class="fas fa-user-cog"></i>
+                        Mi Perfil
+                    </a>
+                    <a href="#" class="dropdown-item">
+                        <i class="fas fa-cog"></i>
+                        Configuración
+                    </a>
+                    <a href="login.html" class="dropdown-item">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Cerrar Sesión
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Sidebar -->
+    <aside class="dashboard-sidebar">
+        <div class="sidebar-section admin-section" style="display: none;">
+            <h3>Administración</h3>
+            <button class="sidebar-btn admin-btn" onclick="showAdminModal('createTramite')">
+                <i class="fas fa-plus-circle"></i>
+                Crear Trámite
+            </button>
+            <button class="sidebar-btn admin-btn" onclick="showAdminModal('generateInvoice')">
+                <i class="fas fa-file-invoice-dollar"></i>
+                Generar Factura
+            </button>
+            <button class="sidebar-btn admin-btn" onclick="showAdminModal('updateProgress')">
+                <i class="fas fa-tasks"></i>
+                Actualizar Progreso
+            </button>
+            <button class="sidebar-btn admin-btn" onclick="showAdminModal('uploadDocuments')">
+                <i class="fas fa-upload"></i>
+                Subir Documentos
+            </button>
+            <button class="sidebar-btn admin-btn" onclick="loadFormsOverview()">
+                <i class="fas fa-clipboard-list"></i>
+                Ver Formularios Web
+            </button>
+        </div>
+
+        <div class="sidebar-section">
+            <h3>Acciones Rápidas</h3>
+            <button class="sidebar-btn primary" onclick="showAdminModal('createTramite')">
+                <i class="fas fa-plus"></i>
+                Nuevo Trámite
+            </button>
+            <button class="sidebar-btn" onclick="showUploadModal()">
+                <i class="fas fa-upload"></i>
+                Subir Documento
+            </button>
+            <button class="sidebar-btn" onclick="showEFirmaModal()">
+                <i class="fas fa-signature"></i>
+                Firmar Documento
+            </button>
+        </div>
+
+        <div class="sidebar-section">
+            <h3>Navegación</h3>
+            <nav class="sidebar-nav">
+                <a href="#" class="sidebar-link active" data-section="overview">
+                    <i class="fas fa-tachometer-alt"></i>
+                    Resumen
+                </a>
+                <a href="#" class="sidebar-link" data-section="tramites">
+                    <i class="fas fa-list"></i>
+                    Trámites Activos
+                </a>
+                <a href="#" class="sidebar-link" data-section="documentos">
+                    <i class="fas fa-file-upload"></i>
+                    Subir Documentos
+                </a>
+                <a href="#" class="sidebar-link" data-section="efirma">
+                    <i class="fas fa-id-card"></i>
+                    Mi e.Firma
+                </a>
+                <a href="#" class="sidebar-link" data-section="timeline">
+                    <i class="fas fa-clock"></i>
+                    Timeline
+                </a>
+                <a href="#" class="sidebar-link" data-section="facturacion">
+                    <i class="fas fa-credit-card"></i>
+                    Facturación
+                </a>
+                <a href="#" class="sidebar-link" data-section="conversaciones" onclick="showConversaciones()">
+                    <i class="fas fa-comments"></i>
+                    Conversaciones con tu Abogado
+                </a>
+                <button class="sidebar-link admin-login-btn" onclick="showAdminLoginModal()">
+                    <i class="fas fa-user-shield"></i>
+                    Administrador
+                </button>
+            </nav>
+        </div>
+    </aside>
+
+    <!-- Dashboard Main Content -->
+    <main class="dashboard-main">
+        <!-- Overview Section -->
+        <section class="dashboard-section active" id="overview">
+            <div class="section-header">
+                <h1>¡Hola de nuevo, Diego!</h1>
+                <p>Aquí tienes un resumen de tus trámites y actividades recientes</p>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>3</h3>
+                        <p>Trámites Activos</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>2</h3>
+                        <p>Pendientes de Revisión</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>5</h3>
+                        <p>Completados</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-receipt"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>$12,500</h3>
+                        <p>Total Facturado</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <h3>Actividad Reciente</h3>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-upload"></i>
+                            </div>
+                            <div class="activity-content">
+                                <h4>Documento subido</h4>
+                                <p>Acta constitutiva.pdf</p>
+                                <span class="activity-time">Hace 2 horas</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-signature"></i>
+                            </div>
+                            <div class="activity-content">
+                                <h4>Documento firmado</h4>
+                                <p>Poder notarial.pdf</p>
+                                <span class="activity-time">Ayer</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="activity-content">
+                                <h4>Trámite completado</h4>
+                                <p>Tu trámite más reciente</p>
+                                <span class="activity-time">Reciente</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <h3>Próximos Vencimientos</h3>
+                    <div class="deadline-list">
+                        <div class="deadline-item">
+                            <div class="deadline-icon">
+                                <i class="fas fa-info-circle"></i>
+                            </div>
+                            <div class="deadline-content">
+                                <h4>No hay vencimientos próximos</h4>
+                                <p>Estás al día con tus trámites</p>
+                                <span class="deadline-time">Todo en orden</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trámites Section -->
+        <section class="dashboard-section" id="tramites">
+            <div class="section-header">
+                <h2>Mis Trámites</h2>
+                <div class="header-actions">
+                    <button class="btn-primary" onclick="showTramiteSection('registro-marca')">
+                        <i class="fas fa-trademark"></i>
+                        Registro de Marca
+                    </button>
+                    <button class="btn-primary" onclick="showTramiteSection('renovacion-marca')">
+                        <i class="fas fa-sync-alt"></i>
+                        Renovación de Marca
+                    </button>
+                    <button class="btn-primary" onclick="showTramiteSection('busqueda-profunda')">
+                        <i class="fas fa-search"></i>
+                        Búsqueda Profunda
+                    </button>
+                    <button class="btn-primary" onclick="showTramiteSection('constitucion')">
+                        <i class="fas fa-building"></i>
+                        Constitución de Empresa
+                    </button>
+                </div>
+            </div>
+
+            <div class="tramites-grid" id="tramites-grid">
+                <!-- Los trámites se cargarán dinámicamente aquí -->
+            </div>
+            
+            <!-- Botón de prueba para crear trámite de ejemplo ELIMINADO -->
+        </section>
+
+        <!-- Documentos Section -->
+        <section class="dashboard-section" id="documentos">
+            <div class="section-header">
+                <h2>Gestión de Documentos</h2>
+                <div class="header-actions">
+                    <button class="btn-primary" onclick="showUploadModal()">
+                        <i class="fas fa-upload"></i>
+                        Subir Documento
+                    </button>
+                    <button class="btn-primary" onclick="showContactSection()">
+                        <i class="fas fa-envelope"></i>
+                        Contactar Abogado
+                    </button>
+                </div>
+            </div>
+
+            <div class="documentos-grid">
+                <div class="documento-card">
+                    <div class="documento-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <div class="documento-info">
+                        <h4>Acta Constitutiva.pdf</h4>
+                        <p>Subido el 20/01/2024</p>
+                        <span class="documento-size">2.5 MB</span>
+                    </div>
+                    <div class="documento-actions">
+                        <button class="btn-icon" title="Descargar">
+                            <i class="fas fa-download"></i>
+                        </button>
+                        <button class="btn-icon" title="Eliminar">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="documento-card">
+                    <div class="documento-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <div class="documento-info">
+                        <h4>Poder Notarial.pdf</h4>
+                        <p>Subido el 19/01/2024</p>
+                        <span class="documento-size">1.8 MB</span>
+                    </div>
+                    <div class="documento-actions">
+                        <button class="btn-icon" title="Descargar">
+                            <i class="fas fa-download"></i>
+                        </button>
+                        <button class="btn-icon" title="Eliminar">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="documento-card">
+                    <div class="documento-icon">
+                        <i class="fas fa-file-image"></i>
+                    </div>
+                    <div class="documento-info">
+                        <h4>Logo Empresa.png</h4>
+                        <p>Subido el 18/01/2024</p>
+                        <span class="documento-size">850 KB</span>
+                    </div>
+                    <div class="documento-actions">
+                        <button class="btn-icon" title="Descargar">
+                            <i class="fas fa-download"></i>
+                        </button>
+                        <button class="btn-icon" title="Eliminar">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- e.Firma Section -->
+        <section class="dashboard-section" id="efirma">
+            <div class="section-header">
+                <h2>Mi e.Firma</h2>
+                <button class="btn-primary" onclick="showEFirmaModal()">
+                    <i class="fas fa-upload"></i>
+                    Subir e.Firma
+                </button>
+            </div>
+
+            <div class="efirma-container">
+                <div class="efirma-card">
+                    <div class="efirma-status">
+                        <div class="status-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h3>e.Firma Activa</h3>
+                        <p>Tu e.Firma está configurada y lista para usar</p>
+                    </div>
+                    <div class="efirma-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Nombre:</span>
+                            <span class="detail-value">Diego Arechiga</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">RFC:</span>
+                            <span class="detail-value">AARE840315XXX</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Vigencia:</span>
+                            <span class="detail-value">Hasta 15/12/2025</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Estado:</span>
+                            <span class="detail-value status-active">Vigente</span>
+                        </div>
+                    </div>
+                    <div class="efirma-actions">
+                        <button class="btn-secondary">Renovar e.Firma</button>
+                        <button class="btn-primary">Descargar Certificado</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline Section -->
+        <section class="dashboard-section" id="timeline">
+            <div class="section-header">
+                <h2>Timeline de Avance</h2>
+                <div class="timeline-filter">
+                    <select name="tramite" onchange="filterTimeline(this.value)">
+                        <option value="">Todos los trámites</option>
+                        <!-- Las opciones se cargarán dinámicamente desde los trámites reales del usuario -->
+                    </select>
+                </div>
+            </div>
+
+            <div class="timeline-container">
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <i class="fas fa-info-circle"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h4>No hay actividad reciente</h4>
+                        <p>El timeline se mostrará cuando tengas trámites activos</p>
+                        <span class="timeline-date">Sin actividad</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Facturación Section -->
+        <section class="dashboard-section" id="facturacion">
+            <div class="section-header">
+                <h2>Facturación</h2>
+                <button class="btn-primary">
+                    <i class="fas fa-download"></i>
+                    Descargar Todas
+                </button>
+            </div>
+
+            <div class="facturacion-grid">
+                <div class="factura-card">
+                    <div class="factura-header">
+                        <h4>No hay facturas</h4>
+                        <span class="status-badge">Sin facturas</span>
+                    </div>
+                    <div class="factura-details">
+                        <p><strong>Estado:</strong> Sin facturas pendientes</p>
+                        <p><strong>Fecha:</strong> -</p>
+                        <p><strong>Monto:</strong> $0.00 MXN</p>
+                    </div>
+                    <div class="factura-actions">
+                        <button class="btn-secondary" disabled>Ver Factura</button>
+                        <button class="btn-primary" disabled>Descargar PDF</button>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="facturacion-summary">
+                <div class="summary-card">
+                    <h4>Resumen Financiero</h4>
+                    <div class="summary-item">
+                        <span>Total de Facturas:</span>
+                        <span class="amount">0 facturas</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Total Facturado:</span>
+                        <span class="amount">$0.00 MXN</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Total Pagado:</span>
+                        <span class="amount paid">$0.00 MXN</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Pendiente de Pago:</span>
+                        <span class="amount pending">$0.00 MXN</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conversaciones Section -->
+        <section class="dashboard-section" id="conversaciones">
+            <div class="section-header">
+                <h2>Conversaciones con tu Abogado</h2>
+                <p>Historial completo de tus conversaciones y consultas legales</p>
+            </div>
+
+            <div class="conversaciones-container">
+                <div class="conversaciones-header">
+                    <div class="conversaciones-stats">
+                        <div class="stat-item">
+                            <i class="fas fa-comments"></i>
+                            <span>Total de conversaciones: <strong id="totalConversaciones">1</strong></span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-clock"></i>
+                            <span>Última actividad: <strong id="ultimaActividad">Hace 5 minutos</strong></span>
+                        </div>
+                    </div>
+                    <div class="conversaciones-actions">
+                        <button class="btn-secondary" onclick="clearChatHistory()">
+                            <i class="fas fa-trash"></i>
+                            Limpiar Historial
+                        </button>
+                        <button class="btn-primary" onclick="exportChatHistory()">
+                            <i class="fas fa-download"></i>
+                            Exportar Conversaciones
+                        </button>
+                    </div>
+                </div>
+
+                <div class="conversaciones-content">
+                    <div class="conversaciones-list" id="conversacionesList">
+                        <!-- Las conversaciones se cargarán dinámicamente -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Formularios Web Section -->
+        <section class="dashboard-section admin-only" id="formularios" style="display: none;">
+            <div class="section-header">
+                <h2>Formularios del Sitio Web</h2>
+                <div class="header-actions">
+                    <button class="btn-secondary" onclick="exportForms()">
+                        <i class="fas fa-download"></i>
+                        Exportar
+                    </button>
+                    <button class="btn-primary" onclick="refreshFormsData()">
+                        <i class="fas fa-sync-alt"></i>
+                        Actualizar
+                    </button>
+                </div>
+            </div>
+
+            <!-- Forms Overview Stats -->
+            <div class="forms-overview-stats" id="formsOverviewStats">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon urgent">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="newContacts">0</h3>
+                            <p>Contactos Nuevos</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon warning">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="pendingSearches">0</h3>
+                            <p>Búsquedas Pendientes</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon info">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="inProgress">0</h3>
+                            <p>En Progreso</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon success">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="completed">0</h3>
+                            <p>Completados</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Forms Navigation Tabs -->
+            <div class="forms-navigation">
+                <button class="tab-btn active" data-tab="contacts">
+                    <i class="fas fa-envelope"></i>
+                    Mensajes de Contacto
+                </button>
+                <button class="tab-btn" data-tab="services">
+                    <i class="fas fa-search"></i>
+                    Solicitudes de Servicios
+                </button>
+                <button class="tab-btn" data-tab="stats">
+                    <i class="fas fa-chart-bar"></i>
+                    Estadísticas
+                </button>
+            </div>
+
+            <!-- Contacts Tab Content -->
+            <div class="tab-content active" id="contactsTab">
+                <div class="filters-bar">
+                    <select id="contactCategory" onchange="filterContacts()">
+                        <option value="">Todas las categorías</option>
+                        <option value="contact">Contacto General</option>
+                        <option value="service_request">Solicitud de Servicio</option>
+                        <option value="consultation">Consulta</option>
+                        <option value="callback">Llamada de Regreso</option>
+                    </select>
+                    <select id="contactStatus" onchange="filterContacts()">
+                        <option value="">Todos los estados</option>
+                        <option value="new">Nuevo</option>
+                        <option value="read">Leído</option>
+                        <option value="in_progress">En Progreso</option>
+                        <option value="replied">Respondido</option>
+                        <option value="completed">Completado</option>
+                    </select>
+                    <select id="contactPriority" onchange="filterContacts()">
+                        <option value="">Todas las prioridades</option>
+                        <option value="low">Baja</option>
+                        <option value="medium">Media</option>
+                        <option value="high">Alta</option>
+                        <option value="urgent">Urgente</option>
+                    </select>
+                </div>
+                <div class="contacts-list" id="contactsList">
+                    <!-- Los contactos se cargarán dinámicamente -->
+                </div>
+            </div>
+
+            <!-- Services Tab Content -->
+            <div class="tab-content" id="servicesTab">
+                <div class="filters-bar">
+                    <select id="serviceType" onchange="filterServices()">
+                        <option value="">Todos los servicios</option>
+                        <option value="free_search">Búsqueda Gratuita</option>
+                        <option value="premium_search">Búsqueda Premium</option>
+                        <option value="registration">Registro de Marca</option>
+                        <option value="renewal">Renovación</option>
+                        <option value="opposition">Oposición</option>
+                        <option value="consultation">Consulta</option>
+                    </select>
+                    <select id="serviceStatus" onchange="filterServices()">
+                        <option value="">Todos los estados</option>
+                        <option value="pending">Pendiente</option>
+                        <option value="in_progress">En Progreso</option>
+                        <option value="completed">Completado</option>
+                        <option value="cancelled">Cancelado</option>
+                    </select>
+                    <select id="servicePriority" onchange="filterServices()">
+                        <option value="">Todas las prioridades</option>
+                        <option value="low">Baja</option>
+                        <option value="medium">Media</option>
+                        <option value="high">Alta</option>
+                        <option value="urgent">Urgente</option>
+                    </select>
+                </div>
+                <div class="services-list" id="servicesList">
+                    <!-- Los servicios se cargarán dinámicamente -->
+                </div>
+            </div>
+
+            <!-- Stats Tab Content -->
+            <div class="tab-content" id="statsTab">
+                <div class="stats-charts">
+                    <div class="chart-container">
+                        <h3>Formularios por Día (Últimos 30 días)</h3>
+                        <div class="chart-placeholder" id="dailyChart">
+                            <!-- Gráfico se cargará dinámicamente -->
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Servicios Más Solicitados</h3>
+                        <div class="chart-placeholder" id="servicesChart">
+                            <!-- Gráfico se cargará dinámicamente -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Upload Modal -->
+    <div class="modal" id="uploadModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Subir Documento</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form class="upload-form">
+                    <div class="form-group">
+                        <label for="documentType">Tipo de Documento</label>
+                        <select id="documentType" required>
+                            <option value="">Seleccionar tipo</option>
+                            <option value="acta">Acta Constitutiva</option>
+                            <option value="poder">Poder Notarial</option>
+                            <option value="identificacion">Identificación Oficial</option>
+                            <option value="logo">Logo de Marca</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="documentFile">Archivo</label>
+                        <input type="file" id="documentFile" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" required>
+                        <small>Formatos permitidos: PDF, JPG, PNG, DOC (máx. 10MB)</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="documentDescription">Descripción (Opcional)</label>
+                        <textarea id="documentDescription" rows="3"></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" onclick="closeUploadModal()">Cancelar</button>
+                        <button type="submit" class="btn-primary">Subir Documento</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- e.Firma Modal -->
+    <div class="modal" id="efirmaModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Configurar e.Firma</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form class="efirma-form">
+                    <div class="form-group">
+                        <label for="efirmaFile">Archivo de e.Firma (.cer)</label>
+                        <input type="file" id="efirmaFile" accept=".cer" required>
+                        <small>Selecciona tu archivo de certificado (.cer)</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="efirmaKey">Llave Privada (.key)</label>
+                        <input type="file" id="efirmaKey" accept=".key" required>
+                        <small>Selecciona tu archivo de llave privada (.key)</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="efirmaPassword">Contraseña de la Llave</label>
+                        <input type="password" id="efirmaPassword" required>
+                        <small>Ingresa la contraseña de tu llave privada</small>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" onclick="closeEFirmaModal()">Cancelar</button>
+                        <button type="submit" class="btn-primary">Configurar e.Firma</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Login Modal -->
+    <div id="adminLoginModal" class="admin-modal">
+        <div class="admin-modal-content">
+            <div class="admin-modal-header">
+                <h3>Acceso Administrador</h3>
+                <button class="admin-modal-close" onclick="closeAdminLoginModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="admin-login-form">
+                <div class="admin-login-info">
+                    <p><i class="fas fa-info-circle"></i> Solo el equipo legal de Sinapsis Legal puede acceder al modo administrador</p>
+                </div>
+                <form onsubmit="handleAdminLogin(event)">
+                    <div class="admin-form-group">
+                        <label for="adminUsername">
+                            <i class="fas fa-user"></i>
+                            Email de Administrador
+                        </label>
+                        <input type="email" id="adminUsername" required placeholder="diego_arechiga@hotmail.com">
+                    </div>
+                    <div class="admin-form-group">
+                        <label for="adminPassword">
+                            <i class="fas fa-lock"></i>
+                            Contraseña
+                        </label>
+                        <div class="password-input-group">
+                            <input type="password" id="adminPassword" required placeholder="Ingresa tu contraseña">
+                            <button type="button" class="password-toggle" onclick="togglePasswordVisibility()">
+                                <i class="fas fa-eye" id="passwordIcon"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="admin-form-actions">
+                        <button type="button" class="btn-cancel" onclick="closeAdminLoginModal()">Cancelar</button>
+                        <button type="submit" class="btn-save">Iniciar Sesión</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Modal -->
+    <div id="adminModal" class="admin-modal">
+        <div class="admin-modal-content">
+            <div class="admin-modal-header">
+                <h3 id="adminModalTitle">Administración</h3>
+                <button class="admin-modal-close" onclick="closeAdminModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div id="adminModalContent">
+                <!-- Modal content will be dynamically loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat Widget -->
+    <div class="chat-widget" id="chatWidget">
+        <div class="chat-header">
+            <div class="chat-header-content" onclick="toggleChat()">
+                <i class="fas fa-comments"></i>
+                <span>Soporte Legal</span>
+                <div class="chat-status">
+                    <span class="status-dot online"></span>
+                    <span class="status-text">En línea</span>
+                </div>
+            </div>
+            <div class="chat-controls">
+                <button class="chat-minimize" onclick="toggleChat(event)" title="Minimizar">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button class="chat-close" onclick="closeChat(event)" title="Cerrar">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div class="chat-body" id="chatBody">
+            <div class="chat-messages" id="chatMessages">
+                <!-- Los mensajes se cargarán dinámicamente -->
+            </div>
+            
+            <div class="chat-input-container">
+                <div class="chat-input-wrapper">
+                    <input type="text" id="chatInput" placeholder="Escribe tu mensaje..." maxlength="500">
+                    <button class="chat-send-btn" onclick="sendMessage()">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+                <div class="chat-typing-indicator" id="typingIndicator" style="display: none;">
+                    <span>Soporte está escribiendo...</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="chat-notification" id="chatNotification" style="display: none;">
+            <i class="fas fa-comment"></i>
+            <span>Nuevo mensaje</span>
+        </div>
+    </div>
+
+    <!-- Modal Carta Poder Simple -->
+    <div id="poderModal" class="modal">
+        <div class="modal-content" style="max-width: 800px; max-height: 90vh; overflow-y: auto;">
+            <div class="modal-header">
+                <h3>
+                    <i class="fas fa-file-contract" style="margin-right: 0.5rem; color: #3b82f6;"></i>
+                    Carta Poder Simple para Trámites ante el IMPI
+                </h3>
+                <button class="modal-close" onclick="closePoderModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; margin-bottom: 1rem; border-left: 4px solid #3b82f6;">
+                    <p style="margin: 0; color: #1e293b; font-weight: 500;">
+                        <i class="fas fa-info-circle" style="margin-right: 0.5rem; color: #3b82f6;"></i>
+                        Este documento es necesario para que Sinapsis Legal pueda representarte ante el IMPI en el registro de tu marca "TECHORP".
+                    </p>
+                </div>
+
+                <div style="background: white; padding: 2rem; border-radius: 8px; border: 1px solid #e2e8f0; font-family: 'Times New Roman', serif; line-height: 1.6;">
+                    <div style="text-align: center; margin-bottom: 2rem;">
+                        <h2 style="color: #1e293b; margin-bottom: 0.5rem;">CARTA PODER SIMPLE</h2>
+                        <p style="color: #64748b; margin: 0;">Para Trámites ante el IMPI</p>
+                    </div>
+
+                    <div style="margin-bottom: 2rem;">
+                        <p style="text-align: right; color: #64748b;">
+                            Monterrey, Nuevo León, México<br>
+                            <span id="currentDate"></span>
+                        </p>
+                    </div>
+
+                    <div style="margin-bottom: 2rem;">
+                        <p style="text-align: justify;">
+                            Yo, <strong>Diego Arechiga</strong>, con N° de identificación <strong>INE / Pasaporte</strong> y con domicilio para oír y recibir notificaciones en: <strong>Monterrey, Nuevo León, México</strong>, por la presente otorgo <strong>PODER ESPECIAL, pero no exclusivo</strong>, a favor de <strong>Sinapsis Legal, S.C.</strong>, con N° de identificación <strong>RFC</strong> y domicilio en <strong>Monterrey, Nuevo León, México</strong>, para que en mi nombre y representación actúe ante el <strong>INSTITUTO MEXICANO DE LA PROPIEDAD INDUSTRIAL (IMPI)</strong> y/o ante cualquier autoridad o tercero que corresponda, realizando todos los actos necesarios o convenientes para la gestión, trámite, defensa y mantenimiento de la(s) siguiente(s) marca(s):
+                        </p>
+                    </div>
+
+                    <div style="margin-bottom: 2rem;">
+                        <p style="text-align: justify;">
+                            <strong>Marca(s):</strong> <strong>TECHORP</strong><br>
+                            <strong>Expediente(s):</strong> En trámite
+                        </p>
+                    </div>
+
+                    <div style="margin-bottom: 2rem;">
+                        <h4 style="color: #1e293b; margin-bottom: 1rem;">Facultades conferidas (sin limitación salvo la expresa indicada en el inciso final):</h4>
+                        <ol style="padding-left: 1.5rem;">
+                            <li>Presentar solicitudes de registro y sus anexos (formulario A/B), incluir imágenes y elegir clases de Niza.</li>
+                            <li>Presentar, firmar y recibir notificaciones electrónicas; cumplir y firmar acuses; pagar derechos oficiales y presentar comprobantes.</li>
+                            <li>Contestar requerimientos y oficios; presentar pruebas, alegatos, escritos y prórrogas; solicitar prórrogas de plazo y pagar las tarifas correspondientes.</li>
+                            <li>Recibir y firmar títulos, certificados, constancias y cualquier documento relacionado con los trámites ante el IMPI.</li>
+                            <li>Interponer, desistir o transigir en recursos administrativos relacionados con los trámites de la(s) marca(s).</li>
+                            <li>Presentar y contestar oposiciones; presentar pruebas y alegatos.</li>
+                            <li>Declarar el uso de la marca, solicitar y gestionar renovaciones, modificaciones o limitaciones del registro, y realizar actos de mantenimiento.</li>
+                            <li>Realizar pagos, tramitar devoluciones, rectificaciones y, en general, realizar todo acto necesario para la defensa y protección del derecho marcario.</li>
+                        </ol>
+                    </div>
+
+                    <div style="margin-bottom: 2rem;">
+                        <p style="text-align: justify;">
+                            <strong>Limitaciones expresas:</strong> NINGUNA
+                        </p>
+                    </div>
+
+                    <div style="margin-bottom: 2rem;">
+                        <p style="text-align: justify;">
+                            Autorizo asimismo que el apoderado firme electrónicamente (e.firma o firma digital) por mí los documentos necesarios para ejecutar este mandato:
+                        </p>
+                        <div style="margin-left: 2rem;">
+                            <label style="display: flex; align-items: center; margin-bottom: 0.5rem;">
+                                <input type="radio" name="efirmaAuth" value="yes" checked style="margin-right: 0.5rem;">
+                                <span><strong>Sí</strong> — autorizo al apoderado a usar mi e.firma (.cer/.key y contraseña) (se deberá pactar entrega segura de credenciales).</span>
+                            </label>
+                            <label style="display: flex; align-items: center;">
+                                <input type="radio" name="efirmaAuth" value="no" style="margin-right: 0.5rem;">
+                                <span><strong>No</strong> — no autorizo el uso de mi e.firma; el apoderado actuará con su propia firma y copia del presente poder.</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 2rem;">
+                        <p style="text-align: justify;">
+                            <strong>Domicilio para recibir notificaciones:</strong> Monterrey, Nuevo León, México
+                        </p>
+                    </div>
+
+                    <div style="margin-bottom: 2rem;">
+                        <p style="text-align: justify;">
+                            Sin más, firmo la presente en Monterrey, Nuevo León, México, a <span id="currentDate2"></span>.
+                        </p>
+                    </div>
+
+                    <div style="display: flex; justify-content: space-between; margin-top: 3rem;">
+                        <div style="text-align: center; flex: 1;">
+                            <div style="border-top: 1px solid #000; width: 200px; margin: 0 auto 0.5rem;"></div>
+                            <strong>Diego Arechiga</strong><br>
+                            <span style="font-size: 0.9rem; color: #64748b;">Titular de la Marca</span>
+                        </div>
+                        <div style="text-align: center; flex: 1;">
+                            <div style="border-top: 1px solid #000; width: 200px; margin: 0 auto 0.5rem;"></div>
+                            <strong>Sinapsis Legal, S.C.</strong><br>
+                            <span style="font-size: 0.9rem; color: #64748b;">Apoderado</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background: #f0f9ff; padding: 1.5rem; border-radius: 8px; border: 1px solid #0ea5e9; margin-top: 2rem;">
+                    <h4 style="color: #0c4a6e; margin-bottom: 1rem;">
+                        <i class="fas fa-signature" style="margin-right: 0.5rem;"></i>
+                        Firma Digital con DocuSign
+                    </h4>
+                    <p style="color: #0c4a6e; margin-bottom: 1.5rem;">
+                        Para proceder con la firma digital de este documento, haz clic en el botón de abajo. Serás redirigido a DocuSign para completar el proceso de firma de manera segura.
+                    </p>
+                    <div style="text-align: center;">
+                        <button class="btn-primary" onclick="redirectToDocuSign()" style="padding: 1rem 2rem; font-size: 1.1rem;">
+                            <i class="fas fa-external-link-alt" style="margin-right: 0.5rem;"></i>
+                            Firmar con DocuSign
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="production-storage.js"></script>
+    <script src="local-storage.js"></script>
+    <script src="debug-dashboard.js"></script>
+    <script src="script.js"></script>
+    <script src="auto-registration.js"></script>
+    <script src="dashboard.js"></script>
+    <script src="chat.js"></script>
+    <!-- Integración automática Conekta + Facturación -->
+    <script src="integrate-conekta.js"></script>
+    
+    <script>
+        // Load user information from session - EXECUTE LAST to prevent overwrites
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🔍 SCRIPT DE USUARIO EJECUTÁNDOSE...');
+            
+            // LIMPIAR SESIONES Y DATOS DE PRUEBA
+            const testSession = JSON.parse(localStorage.getItem('user_session') || sessionStorage.getItem('user_session') || '{}');
+            if (testSession.email === 'test@example.com' || testSession.name === 'undefined undefined' || testSession.name === 'Test User') {
+                console.log('🧹 Limpiando sesión y datos de prueba...');
+                
+                // Limpiar sesión
+                localStorage.removeItem('user_session');
+                sessionStorage.removeItem('user_session');
+                
+                // Limpiar trámites de prueba
+                localStorage.removeItem('client_tramites');
+                localStorage.removeItem('admin_tramites');
+                localStorage.removeItem('user_tramites');
+                
+                // Limpiar usuarios de prueba
+                const users = JSON.parse(localStorage.getItem('registered_users') || '[]');
+                const cleanUsers = users.filter(user => 
+                    user.email !== 'test@example.com' && 
+                    user.name !== 'Test User' && 
+                    user.name !== 'undefined undefined'
+                );
+                localStorage.setItem('registered_users', JSON.stringify(cleanUsers));
+                
+                console.log('✅ Datos de prueba eliminados');
+                
+                // Redirigir al login para que inicie sesión correctamente
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            // Get user session from localStorage or sessionStorage
+            const userSession = JSON.parse(localStorage.getItem('user_session') || sessionStorage.getItem('user_session') || '{}');
+            console.log('📋 Sesión del usuario encontrada:', userSession);
+            
+            if (userSession.email && userSession.email !== 'test@example.com' && userSession.name && userSession.name !== 'undefined undefined') {
+                console.log('✅ Usuario autenticado correctamente, actualizando información...');
+                
+                // Update user information in the header
+                const userNameElement = document.getElementById('userName');
+                const userEmailElement = document.getElementById('userEmail');
+                
+                console.log('🔍 Elementos encontrados:', { userNameElement, userEmailElement });
+                
+                if (userNameElement) {
+                    userNameElement.textContent = userSession.name;
+                    console.log('✅ Nombre actualizado a:', userSession.name);
+                }
+                
+                if (userEmailElement) {
+                    userEmailElement.textContent = userSession.email;
+                    console.log('✅ Email actualizado a:', userSession.email);
+                }
+                
+                // PROTECCIÓN: Verificar y restaurar la información si se sobrescribe
+                const protectUserInfo = () => {
+                    const currentName = document.getElementById('userName')?.textContent;
+                    const currentEmail = document.getElementById('userEmail')?.textContent;
+                    
+                    if (currentName !== userSession.name && currentName !== 'undefined undefined') {
+                        console.log('🛡️ Protegiendo nombre del usuario de sobrescritura');
+                        document.getElementById('userName').textContent = userSession.name;
+                    }
+                    
+                    if (currentEmail !== userSession.email && currentEmail !== 'test@example.com') {
+                        console.log('🛡️ Protegiendo email del usuario de sobrescritura');
+                        document.getElementById('userEmail').textContent = userSession.email;
+                    }
+                };
+                
+                // Verificar cada 500ms para proteger la información
+                const protectionInterval = setInterval(protectUserInfo, 500);
+                
+                // Verificar que los cambios se mantengan
+                setTimeout(() => {
+                    console.log('🔍 Verificación después de 1 segundo:');
+                    console.log('userName:', document.getElementById('userName')?.textContent);
+                    console.log('userEmail:', document.getElementById('userEmail')?.textContent);
+                    
+                    // Limpiar el intervalo después de 10 segundos
+                    setTimeout(() => {
+                        clearInterval(protectionInterval);
+                        console.log('🛡️ Protección de usuario desactivada');
+                    }, 10000);
+                }, 1000);
+                
+            } else {
+                console.log('❌ No hay sesión válida de usuario, redirigiendo al login...');
+                // No valid session found, redirect to login
+                window.location.href = 'login.html';
+            }
+        });
+    </script>
+</body>
+</html> 
